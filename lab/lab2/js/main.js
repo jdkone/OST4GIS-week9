@@ -133,6 +133,10 @@ var goToOrigin = _.once(function(lat, lng) {
 });
 
 
+//client.geocodeForward('geocode_this', function(err, res) {
+  // res is a GeoJSON document with geocoding matches
+//});
+
 /* Given a lat and a long, we should create a marker, store it
  *  somewhere, and add it to the map
  */
@@ -166,12 +170,21 @@ $(document).ready(function() {
     }
   });
 
+
   // click handler for the "calculate" button (probably you want to do something with this)
   $("#calculate").click(function(e) {
     var dest = $('#dest').val();
     console.log(dest);
   });
 
+geocodeurl = function(geocode_this) {
+  return "https://api.mapbox.com/geocoding/v5/mapbox.places/" + geocode_this + ".json?access_token=pk.eyJ1IjoianVrb25lIiwiYSI6ImNqZmQ3NHJoMTFpYjQycW1zNjRtaDk4cncifQ.vW4XKi58xHwWOSJIqCs_9Q"
+};
+
+$.ajax(geocodeurl);
+
+//client.geocodeForward('geocode_this', function(err, res) {
+    // res is a GeoJSON document with geocoding matches
+  });
+
 });
-
-
